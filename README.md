@@ -10,3 +10,4 @@ Shift Lama : A
 ![Lampiran Produk](produk.png)
 ![Lampiran Tambah Produk](tambahproduk.png)
 ![Lampiran Detail Produk](detailproduk.png)
+![Lampiran Ubah Produk](ubahproduk.png)
