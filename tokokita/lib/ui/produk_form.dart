@@ -45,7 +45,10 @@ class _ProdukFormState extends State<ProdukForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(judul)),
+      appBar: AppBar(
+        title: Text(judul),
+        backgroundColor: const Color.fromARGB(255, 255, 201, 219), // Warna pink
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -68,7 +71,16 @@ class _ProdukFormState extends State<ProdukForm> {
 //Membuat Textbox Kode Produk
   Widget _kodeProdukTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Kode Produk"),
+      decoration: const InputDecoration(
+        labelText: "Kode Produk",
+        labelStyle: TextStyle(color: Colors.black), // Warna label hitam
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.black), // Warna border hitam
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.black), // Warna saat fokus
+        ),
+      ),
       keyboardType: TextInputType.text,
       controller: _kodeProdukTextboxController,
       validator: (value) {
@@ -83,7 +95,16 @@ class _ProdukFormState extends State<ProdukForm> {
 //Membuat Textbox Nama Produk
   Widget _namaProdukTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Nama Produk"),
+      decoration: const InputDecoration(
+        labelText: "Nama Produk",
+        labelStyle: TextStyle(color: Colors.black), // Warna label hitam
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.black), // Warna border hitam
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.black), // Warna saat fokus
+        ),
+      ),
       keyboardType: TextInputType.text,
       controller: _namaProdukTextboxController,
       validator: (value) {
@@ -98,7 +119,16 @@ class _ProdukFormState extends State<ProdukForm> {
 //Membuat Textbox Harga Produk
   Widget _hargaProdukTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Harga"),
+      decoration: const InputDecoration(
+        labelText: "Harga",
+        labelStyle: TextStyle(color: Colors.black), // Warna label hitam
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.black), // Warna border hitam
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.black), // Warna saat fokus
+        ),
+      ),
       keyboardType: TextInputType.number,
       controller: _hargaProdukTextboxController,
       validator: (value) {
@@ -111,22 +141,25 @@ class _ProdukFormState extends State<ProdukForm> {
   }
 
   Widget _buttonSubmit() {
-    return OutlinedButton(
-        child: Text(tombolSubmit),
-        onPressed: () {
-          var validate = _formKey.currentState!.validate();
-          if (validate) {
-            if (!_isLoading) {
-              if (widget.produk != null) {
-//kondisi update produk
-                ubah();
-              } else {
-//kondisi tambah produk
-                simpan();
-              }
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color.fromARGB(255, 255, 201, 219), // Warna pink
+        foregroundColor: Colors.black, // Warna teks hitam
+      ),
+      child: Text(tombolSubmit),
+      onPressed: () {
+        var validate = _formKey.currentState!.validate();
+        if (validate) {
+          if (!_isLoading) {
+            if (widget.produk != null) {
+              ubah(); // kondisi update produk
+            } else {
+              simpan(); // kondisi tambah produk
             }
           }
-        });
+        }
+      },
+    );
   }
 
   simpan() {

@@ -23,6 +23,7 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Registrasi Muthia"),
+        backgroundColor: const Color.fromARGB(255, 255, 201, 219),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -45,10 +46,18 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
     );
   }
 
-//Membuat Textbox Nama
+// Nama Text Field
   Widget _namaTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Nama"),
+      decoration: const InputDecoration(
+        labelText: "Nama",
+        labelStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Color.fromARGB(255, 255, 201, 219),
+          ),
+        ),
+      ),
       keyboardType: TextInputType.text,
       controller: _namaTextboxController,
       validator: (value) {
@@ -60,18 +69,25 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
     );
   }
 
-//Membuat Textbox email
+// Email Text Field
   Widget _emailTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Email"),
+      decoration: const InputDecoration(
+        labelText: "Email",
+        labelStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.blue,
+          ),
+        ),
+      ),
       keyboardType: TextInputType.emailAddress,
       controller: _emailTextboxController,
       validator: (value) {
-        //validasi harus diisi
         if (value!.isEmpty) {
           return 'Email harus diisi';
         }
-        //validasi email
+        // Validasi email
         Pattern pattern =
             r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0 -9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$';
         RegExp regex = RegExp(pattern.toString());
@@ -83,15 +99,22 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
     );
   }
 
-//Membuat Textbox password
+// Password Text Field
   Widget _passwordTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Password"),
+      decoration: const InputDecoration(
+        labelText: "Password",
+        labelStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Color.fromARGB(255, 255, 201, 219),
+          ),
+        ),
+      ),
       keyboardType: TextInputType.text,
       obscureText: true,
       controller: _passwordTextboxController,
       validator: (value) {
-        //jika karakter yang dimasukkan kurang dari 6 karakter
         if (value!.length < 6) {
           return "Password harus diisi minimal 6 karakter";
         }
@@ -100,14 +123,21 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
     );
   }
 
-  //membuat textbox Konfirmasi Password
+// Konfirmasi Password Text Field
   Widget _passwordKonfirmasiTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Konfirmasi Password"),
+      decoration: const InputDecoration(
+        labelText: "Konfirmasi Password",
+        labelStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.blue,
+          ),
+        ),
+      ),
       keyboardType: TextInputType.text,
       obscureText: true,
       validator: (value) {
-        //jika inputan tidak sama dengan password
         if (value != _passwordTextboxController.text) {
           return "Konfirmasi Password tidak sama";
         }
@@ -120,6 +150,10 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
   //Membuat Tombol Registrasi
   Widget _buttonRegistrasi() {
     return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color.fromARGB(255, 255, 201, 219),
+          foregroundColor: Colors.black,
+        ),
         child: const Text("Registrasi"),
         onPressed: () {
           var validate = _formKey.currentState!.validate();

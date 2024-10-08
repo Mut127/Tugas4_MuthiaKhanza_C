@@ -19,21 +19,22 @@ class _ProdukDetailState extends State<ProdukDetail> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Produk'),
+        backgroundColor: const Color.fromARGB(255, 255, 201, 219),
       ),
       body: Center(
         child: Column(
           children: [
             Text(
               "Kode : ${widget.produk!.kodeProduk}",
-              style: const TextStyle(fontSize: 20.0),
+              style: const TextStyle(fontSize: 20.0, color: Colors.black),
             ),
             Text(
               "Nama : ${widget.produk!.namaProduk}",
-              style: const TextStyle(fontSize: 18.0),
+              style: const TextStyle(fontSize: 18.0, color: Colors.black),
             ),
             Text(
               "Harga : Rp. ${widget.produk!.hargaProduk.toString()}",
-              style: const TextStyle(fontSize: 18.0),
+              style: const TextStyle(fontSize: 18.0, color: Colors.black),
             ),
             _tombolHapusEdit()
           ],
@@ -46,8 +47,12 @@ class _ProdukDetailState extends State<ProdukDetail> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-// Tombol Edit
-        OutlinedButton(
+        // Tombol Edit
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromARGB(255, 255, 201, 219),
+            foregroundColor: Colors.black,
+          ),
           child: const Text("EDIT"),
           onPressed: () {
             Navigator.push(
@@ -61,8 +66,12 @@ class _ProdukDetailState extends State<ProdukDetail> {
           },
         ),
 
-// Tombol Hapus
-        OutlinedButton(
+        // Tombol Hapus
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromARGB(255, 255, 201, 219),
+            foregroundColor: Colors.black,
+          ),
           child: const Text("DELETE"),
           onPressed: () => confirmHapus(),
         ),

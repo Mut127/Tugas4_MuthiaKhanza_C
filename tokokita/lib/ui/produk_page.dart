@@ -18,24 +18,36 @@ class _ProdukPageState extends State<ProdukPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('List Produk'),
+        backgroundColor: const Color.fromARGB(255, 255, 201, 219),
         actions: [
           Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                child: const Icon(Icons.add, size: 26.0),
-                onTap: () async {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ProdukForm()));
-                },
-              ))
+            padding: const EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              child: const Icon(
+                Icons.add,
+                size: 26.0,
+                color: Colors.black,
+              ),
+              onTap: () async {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProdukForm()));
+              },
+            ),
+          )
         ],
       ),
       drawer: Drawer(
         child: ListView(
           children: [
             ListTile(
-              title: const Text('Logout'),
-              trailing: const Icon(Icons.logout),
+              title: const Text(
+                'Logout',
+                style: TextStyle(color: Colors.black),
+              ),
+              trailing: const Icon(
+                Icons.logout,
+                color: Color.fromARGB(255, 255, 201, 219),
+              ),
               onTap: () async {
                 await LogoutBloc.logout().then((value) => {
                       Navigator.of(context).pushAndRemoveUntil(
@@ -56,7 +68,9 @@ class _ProdukPageState extends State<ProdukPage> {
                   list: snapshot.data,
                 )
               : const Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    color: Color.fromARGB(255, 255, 201, 219),
+                  ),
                 );
         },
       ),
@@ -94,9 +108,16 @@ class ItemProduk extends StatelessWidget {
                     )));
       },
       child: Card(
+        color: const Color.fromARGB(255, 255, 230, 240),
         child: ListTile(
-          title: Text(produk.namaProduk!),
-          subtitle: Text(produk.hargaProduk.toString()),
+          title: Text(
+            produk.namaProduk!,
+            style: const TextStyle(color: Colors.black),
+          ),
+          subtitle: Text(
+            produk.hargaProduk.toString(),
+            style: const TextStyle(color: Colors.black),
+          ),
         ),
       ),
     );

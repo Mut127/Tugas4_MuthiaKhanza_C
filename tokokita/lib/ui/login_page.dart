@@ -24,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login Muthia'),
+        backgroundColor: const Color.fromARGB(255, 255, 201, 219),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -50,11 +51,16 @@ class _LoginPageState extends State<LoginPage> {
   // Membuat Textbox email
   Widget _emailTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Email"),
+      decoration: const InputDecoration(
+        labelText: "Email",
+        labelStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.blue),
+        ),
+      ),
       keyboardType: TextInputType.emailAddress,
       controller: _emailTextboxController,
       validator: (value) {
-        // Validasi harus diisi
         if (value!.isEmpty) {
           return 'Email harus diisi';
         }
@@ -66,12 +72,17 @@ class _LoginPageState extends State<LoginPage> {
   // Membuat Textbox password
   Widget _passwordTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Password"),
+      decoration: const InputDecoration(
+        labelText: "Password",
+        labelStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Color.fromARGB(255, 255, 201, 219)),
+        ),
+      ),
       keyboardType: TextInputType.text,
       obscureText: true,
       controller: _passwordTextboxController,
       validator: (value) {
-        // Jika karakter yang dimasukkan kurang dari 6 karakter
         if (value!.isEmpty) {
           return "Password harus diisi";
         }
@@ -83,13 +94,18 @@ class _LoginPageState extends State<LoginPage> {
   // Membuat Tombol Login
   Widget _buttonLogin() {
     return ElevatedButton(
-        child: const Text("Login"),
-        onPressed: () {
-          var validate = _formKey.currentState!.validate();
-          if (validate) {
-            if (!_isLoading) _submit();
-          }
-        });
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color.fromARGB(255, 255, 201, 219),
+        foregroundColor: Colors.black,
+      ),
+      child: const Text("Login"),
+      onPressed: () {
+        var validate = _formKey.currentState!.validate();
+        if (validate) {
+          if (!_isLoading) _submit();
+        }
+      },
+    );
   }
 
   void _submit() {
@@ -98,9 +114,9 @@ class _LoginPageState extends State<LoginPage> {
       _isLoading = true;
     });
     LoginBloc.login(
-            email: _emailTextboxController.text,
-            password: _passwordTextboxController.text)
-        .then((value) async {
+      email: _emailTextboxController.text,
+      password: _passwordTextboxController.text,
+    ).then((value) async {
       if (value.code == 200) {
         await UserInfo().setToken(value.token.toString());
         await UserInfo().setUserID(int.parse(value.userID.toString()));
@@ -131,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
       child: InkWell(
         child: const Text(
           "Registrasi",
-          style: TextStyle(color: Colors.blue),
+          style: TextStyle(color: Colors.black),
         ),
         onTap: () {
           Navigator.push(context,
